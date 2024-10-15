@@ -87,7 +87,7 @@ public class JeuxOlympiquesApplication implements CommandLineRunner {
         epreuveSprint300m.setNom("300m sprint");
         epreuveSprint300m.setPrix(135.5);
         epreuveSprint300m.setNbBillets(1500);
-        epreuveSprint300m.setDate(LocalDate.of(2024, 07, 7));
+        epreuveSprint300m.setDate(LocalDate.of(2025, 07, 7));
         epreuveSprint300m.setNbDelegations(15);
         epreuveSprint300m.setIdInfrastructure(stadeToulousain.getId());
 
@@ -95,7 +95,7 @@ public class JeuxOlympiquesApplication implements CommandLineRunner {
         epreuveSprint100m.setNom("100m sprint");
         epreuveSprint100m.setPrix(115.5);
         epreuveSprint100m.setNbBillets(1000);
-        epreuveSprint100m.setDate(LocalDate.of(2024, 07, 5));
+        epreuveSprint100m.setDate(LocalDate.of(2025, 07, 5));
         epreuveSprint100m.setNbDelegations(10);
         epreuveSprint100m.setIdInfrastructure(stadeOlympique.getId());
         
@@ -103,7 +103,7 @@ public class JeuxOlympiquesApplication implements CommandLineRunner {
         epreuveNageC100m.setNom("natation 100m crolle");
         epreuveNageC100m.setPrix(115.5);
         epreuveNageC100m.setNbBillets(3000);
-        epreuveNageC100m.setDate(LocalDate.of(2024, 07, 7));
+        epreuveNageC100m.setDate(LocalDate.of(2025, 07, 7));
         epreuveNageC100m.setNbDelegations(10);
         epreuveNageC100m.setIdInfrastructure(stadeOlympique.getId());
 
@@ -138,7 +138,7 @@ public class JeuxOlympiquesApplication implements CommandLineRunner {
         // Création d'un participant
         organisateurService.creerDelegation(france);
         organisateurService.creerDelegation(usa);
-        organisateurService.setDelegation("jimmy@bellier.fr", 2);
+        organisateurService.setDelegation("jimmy@bellier.fr", 1);
         organisateurService.setDelegation("quentin.joly@todo.fr", 2);
         organisateurService.setDelegation("jose.garcia@studi.fr", 1);
 
@@ -209,10 +209,12 @@ public class JeuxOlympiquesApplication implements CommandLineRunner {
 
         // Use case: S'inscrire à des épreuves au nom de sa délégation
         participantService.inscrireEpreuve(Jose.getEmail(), epreuve.getId());
-        participantService.inscrireEpreuve(Jimmy.getEmail(), epreuve.getId());
         participantService.inscrireEpreuve(Quentin.getEmail(), epreuve.getId());
-
+        
         participantService.desengagerEpreuve(Jose.getEmail(), epreuve.getId());
+
+        participantService.inscrireEpreuve(Jimmy.getEmail(), epreuve.getId());
+
 
         // Use case: consulter ses résultats
         System.out.println("Résultat du participant Jimmy : " + participantService.consulterResultatsParticipant(Jimmy.getEmail()));
